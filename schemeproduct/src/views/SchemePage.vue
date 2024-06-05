@@ -103,7 +103,7 @@ const checkTheProduction = (item) => {
     orientation: newQuaternion,
     model: {
       uri: `/src/assets/model/${item.src}.gltf`,
-      scale: 0.001,
+      scale: item.scale,
       minimumPixelSize: 12,
     },
   });
@@ -111,10 +111,20 @@ const checkTheProduction = (item) => {
 
 const delProgramme = async (item) => {
   console.log(item);
-  await delScheme({id:item.id});
+  await delScheme({ id: item.id });
+  ElMessage.success("删除成功，请重新选择模型！");
+  currentItem.value = 0;
+  clearFlatten(global.$viewer.scene.primitives._primitives[0]);
+  global.$viewer.entities.removeAll();
   const { data } = await getScheme();
   programmeList.value = data;
 };
+
+onUnmounted(() => {
+  currentItem.value = 0;
+  clearFlatten(global.$viewer.scene.primitives._primitives[0]);
+  global.$viewer.entities.removeAll();
+});
 </script>
 
 <style lang="scss">

@@ -399,11 +399,11 @@ const summitProdution = () => {
   const src = `${currentItem.value}`;
   const tileHeight = height.value;
   const name = "";
-  let sacle;
+  let scale;
   if (currentScale.value === 0) {
-    sacle = currentScale.value;
+    scale = currentScale.value;
   } else {
-    sacle = currentScale.value._value;
+    scale = currentScale.value._value;
   }
   parmas = {
     cameraOrt,
@@ -411,7 +411,7 @@ const summitProdution = () => {
     heading,
     position,
     polygonJson,
-    sacle,
+    scale,
     src,
     tileHeight,
     name,
